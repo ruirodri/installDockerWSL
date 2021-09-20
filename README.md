@@ -44,13 +44,15 @@
 => Carregando em variáveis de ambiente definições da distribuição e versão <br /> **source /etc/os-release**
 <br />
 
-=> Adicionando um repositório de pacotes como origem de instalação (atenção! comando longo, está em mais de uma linha) <br /> **curl -fsSL https://download.docker.com/linux/${ID}/gpg | sudo apt-key add -
-echo "deb [arch=amd64] https://download.docker.com/linux/${ID} ${VERSION_CODENAME} stable" | sudo tee /etc/apt/sources.list.d/docker.list**
+=> Adicionando a chave GPG de um repositório de pacotes que usaremos como origem de instalação<br /> **curl -fsSL https://download.docker.com/linux/${ID}/gpg | sudo apt-key add -**
+
+=> Adicionando o repositório em si à lista de origens de pacotes (atenção, comando pode aparecer aqui em mais de uma linha!)<br /> **echo "deb [arch=amd64] https://download.docker.com/linux/${ID} ${VERSION_CODENAME} stable" | sudo tee /etc/apt/sources.list.d/docker.list**
 <br />
+
 => Buscando a lista de pacotes deste novo repositório adicionado <br /> **sudo apt update**
 <br />
 
-=> Instalando os pacotes do Docker Engine<br />. **sudo apt install docker-ce docker-ce-cli containerd.io**
+=> Instalando os pacotes do Docker Engine<br /> **sudo apt install docker-ce docker-ce-cli containerd.io**
 <br />
 
 => Baixando o binário do Docker Compose diretamente do GitHub (atenção de novo, comando longo!) <br /> **sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose**
@@ -63,4 +65,14 @@ echo "deb [arch=amd64] https://download.docker.com/linux/${ID} ${VERSION_CODENAM
 <br />
 
 => Abrir outra janela de terminal do Linux (pelo menu do windows ou com botão direito no ícone da barra de tarefas)<br />
-=> Para validar a instalação, vamos baixar a imagem do Redmine e executá-lo. <br /> **sudo docker run --rm -d -p 80:3000 --name meuRedmine redmine**
+=> Para validar a instalação, vamos baixar a imagem do Redmine e executá-lo. <br /> **sudo docker run --rm -d -p 5080:3000 --name meuRedmine redmine**
+<br />
+=> Para acessar o container que acabamos de iniciar, abrir o browser e acessar "http://localhost:5080"<br />
+=> O usuário padrão é "admin", com a senha "admin", e esta senha precisa ser alterada no primeiro acesso.<br /><br /><br />
+
+=> Referências utilizadas:
+https://dev.to/bowmanjd/install-docker-on-windows-wsl-without-docker-desktop-34m9
+https://phoenixnap.com/kb/install-docker-compose-on-ubuntu-20-04
+
+
+
