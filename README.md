@@ -71,8 +71,8 @@
 => Para acessar o container que acabamos de iniciar, abrir o browser e acessar "http://localhost:5080"<br />
 => O usuário padrão é "admin", com a senha "admin", e esta senha precisa ser alterada no primeiro acesso.<br /><br /><br />
 
-=> Referências utilizadas:
-https://dev.to/bowmanjd/install-docker-on-windows-wsl-without-docker-desktop-34m9
+=> Referências utilizadas: <br />
+https://dev.to/bowmanjd/install-docker-on-windows-wsl-without-docker-desktop-34m9<br />
 https://phoenixnap.com/kb/install-docker-compose-on-ubuntu-20-04
 <br />
 <br />
