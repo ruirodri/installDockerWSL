@@ -67,6 +67,7 @@
 => Abrir outra janela de terminal do Linux (pelo menu do windows ou com botão direito no ícone da barra de tarefas)<br />
 => Para validar a instalação, vamos baixar a imagem do Redmine e executá-lo. <br /> **sudo docker run --rm -d -p 5080:3000 --name meuRedmine redmine**
 <br />
+<br />
 => Para acessar o container que acabamos de iniciar, abrir o browser e acessar "http://localhost:5080"<br />
 => O usuário padrão é "admin", com a senha "admin", e esta senha precisa ser alterada no primeiro acesso.<br /><br /><br />
 
