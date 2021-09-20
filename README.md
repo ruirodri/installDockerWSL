@@ -74,6 +74,9 @@
 => Referências utilizadas:
 https://dev.to/bowmanjd/install-docker-on-windows-wsl-without-docker-desktop-34m9
 https://phoenixnap.com/kb/install-docker-compose-on-ubuntu-20-04
+<br />
+<br />
+### Dica: não esqueça de fechar o daemon do Docker (usando Ctrl+C) antes de fechar o Linux
 
 
 
