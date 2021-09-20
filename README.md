@@ -1,64 +1,66 @@
-# installDockerWSL
-<b>Guia para a instalação do Docker Engine sob WSL no Windows 10.</b>
+# Guia para a instalação do Docker Engine sob WSL no Windows 10.
+<br />
 
+### Os comandos descritos são aplicados em um janela de command prompt (cmd), e você pode ir copiando as linhas em bold (que não estão iniciadas por "=>") e colando-as na janela de terminal
+<br />
 
-Comando que mostra o status atual do WSL<br />
-<b>wsl --status</b>
+=> Comando que mostra o status atual do WSL <br /> **wsl --status**
+<br />
 
-Comando que mostra as distribuições instaladas no seu computador
-<b>wsl --list</b>
+=> Caso não tenhamos o WSL instalado, este guia da Microsoft conduz pelo passo a passo da instalação <br> https://docs.microsoft.com/pt-br/windows/wsl/install-win10
+<br>
 
-Comando que lista todas as distribuições de wsl disponíveis online
-<b>wsl --list --online</b>
+=> Comando que mostra as distribuições instaladas no seu computador <br /> **wsl --list**
+<br />
 
-Define que vamos trabalhar por padrão com o WSL versão 2.
-<b>wsl --set-default-version 2</b>
+=> Comando que lista todas as distribuições de wsl disponíveis online <br /> **wsl --list --online**
+<br>
 
-Vamos instalar um Linux Ubuntu versão 20.04
-<b>wsl --install -d Ubuntu-20.04</b>
+### Aqui começa o processo de instalação do Linux.  <br>
+=> Comando que define que vamos trabalhar por padrão com o WSL versão 2.<br /> **wsl --set-default-version 2**
+<br />
 
-<i>A partir daqui, os comandos vão para o terminal do Linux que se abre.</i>
+=> Vamos instalar um Linux Ubuntu versão 20.04<br /> **wsl --install -d Ubuntu-20.04**
+<br />
 
-Após a instalação, buscar a lista de atualizações para o SO
-<b>sudo apt update</b>
+#### A partir daqui, os comandos vão para o terminal do Linux que se abre. 
+=> Após a instalação, buscar a lista de atualizações para o SO<br /> **sudo apt update**
+<br />
 
-Fazer a atualização do SO (pode demorar um pouco)
-<b>sudo apt upgrade</b>
+=> Fazer a atualização do SO (pode demorar um pouco)<br /> **sudo apt upgrade**
+<br />
 
-#Ao final da atualização, fechar a janela do terminal Linux
+=> Ao final da atualização, fechar a janela do terminal Linux<br />
+=> Para forçar o restart do kernel Linux, na janela de terminal do windows digitar <br /> **wsl --shutdown**
+<br />
 
-#Na janela de terminal do windows, 
-wsl --shutdown
+### Aqui começa o processo de instalação do Docker dentro do Linux.  <br>
+=> No menu iniciar, procurar por "Ubuntu" e iniciar o Ubuntu 20.04 que aparecerá.<br />
+=> Abrirá novamente o terminal do Linux<br /><br />
 
-#No menu iniciar, procurar por "Ubuntu" e iniciar o Ubuntu 20.04 que aparecerá.
+=> Instalando algumas ferramentas que serão utilizadas no processo de instalação. <br /> **sudo apt install --no-install-recommends apt-transport-https ca-certificates curl gnupg2**
+<br />
 
-#Já estamos com o Linux instalado e atualizado. Agora, vamos começar a instalação do Docker propriamente dito.
+=> Carregando em variáveis de ambiente definições da distribuição e versão <br /> **source /etc/os-release**
+<br />
 
-#Instalando pré-condições para a instalação do Docker
-sudo apt install --no-install-recommends apt-transport-https ca-certificates curl gnupg2
+=> Adicionando um repositório de pacotes como origem de instalação (atenção! comando longo, está em mais de uma linha) <br /> **curl -fsSL https://download.docker.com/linux/${ID}/gpg | sudo apt-key add -
+echo "deb [arch=amd64] https://download.docker.com/linux/${ID} ${VERSION_CODENAME} stable" | sudo tee /etc/apt/sources.list.d/docker.list**
+<br />
+=> Buscando a lista de pacotes deste novo repositório adicionado <br /> **sudo apt update**
+<br />
 
-#Carregando em variáveis de ambiente definições da distribuição e versão 
-source /etc/os-release
+=> Instalando os pacotes do Docker Engine<br />. **sudo apt install docker-ce docker-ce-cli containerd.io**
+<br />
 
-#Adicionando um repositório de pacotes como origem de instalação
-curl -fsSL https://download.docker.com/linux/${ID}/gpg | sudo apt-key add -
-echo "deb [arch=amd64] https://download.docker.com/linux/${ID} ${VERSION_CODENAME} stable" | sudo tee /etc/apt/sources.list.d/docker.list
+=> Baixando o binário do Docker Compose diretamente do GitHub (atenção de novo, comando longo!) <br /> **sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose**
+<br />
 
-#Buscando a lista de pacotes deste novo repositório adicionado
-sudo apt update
+=> Tornando o binário do Docker Compose executável <br /> **sudo chmod +x /usr/local/bin/docker-compose**
+<br />
 
-#Instalando os pacotes do Docker Engine
-sudo apt install docker-ce docker-ce-cli containerd.io
+=> Executando o daemon do docker. <br /> **sudo dockerd**
+<br />
 
-#Baixando o binário do Docker Compose diretamente do GitHub
-sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-
-#Tornando o binário do Docker Compose executável
-sudo chmod +x /usr/local/bin/docker-compose
-
-#Executando o daemon do docker
-sudo dockerd
-
-#Baixando a imagem do Redmine e executando como exemplo
-sudo docker run --rm -d -p 80:3000 --name meuRedmine redmine
-
+=> Abrir outra janela de terminal do Linux (pelo menu do windows ou com botão direito no ícone da barra de tarefas)<br />
+=> Para validar a instalação, vamos baixar a imagem do Redmine e executá-lo. <br /> **sudo docker run --rm -d -p 80:3000 --name meuRedmine redmine**
