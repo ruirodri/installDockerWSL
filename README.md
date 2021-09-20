@@ -1,27 +1,29 @@
 # installDockerWSL
-Guia para a instalação do Docker Engine sob WSL no Windows 10.
+<b>Guia para a instalação do Docker Engine sob WSL no Windows 10.</b>
 
 
-#Comando que mostra o status atual do WSL
-wsl --status
+Comando que mostra o status atual do WSL<br />
+<b>wsl --status</b>
 
-#comando que mostra as distribuições instaladas no seu computador
-wsl --list
+Comando que mostra as distribuições instaladas no seu computador
+<b>wsl --list</b>
 
-#Comando que lista todas as distribuições de wsl disponíveis online
-wsl --list --online
+Comando que lista todas as distribuições de wsl disponíveis online
+<b>wsl --list --online</b>
 
-#Define que vamos trabalhar por padrão com o WSL versão 2.
-wsl --set-default-version 2
+Define que vamos trabalhar por padrão com o WSL versão 2.
+<b>wsl --set-default-version 2</b>
 
-#Vamos instalar um Linux Ubuntu versão 20.04
-wsl --install -d Ubuntu-20.04
+Vamos instalar um Linux Ubuntu versão 20.04
+<b>wsl --install -d Ubuntu-20.04</b>
 
-#Buscar a lista de atualizações para o SO
-sudo apt update
+<i>A partir daqui, os comandos vão para o terminal do Linux que se abre.</i>
 
-#Fazer a atualização do SO
-sudo apt upgrade
+Após a instalação, buscar a lista de atualizações para o SO
+<b>sudo apt update</b>
+
+Fazer a atualização do SO (pode demorar um pouco)
+<b>sudo apt upgrade</b>
 
 #Ao final da atualização, fechar a janela do terminal Linux
 
