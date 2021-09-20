@@ -20,14 +20,14 @@
 => Comando que define que vamos trabalhar por padrão com o WSL versão 2.<br /> **wsl --set-default-version 2**
 <br />
 
-=> Vamos instalar um Linux Ubuntu versão 20.04<br /> **wsl --install -d Ubuntu-20.04**
+=> Vamos instalar um Linux Ubuntu versão 20.04 (demora um pouco!) <br /> **wsl --install -d Ubuntu-20.04**
 <br />
 
 #### A partir daqui, os comandos vão para o terminal do Linux que se abre. 
 => Após a instalação, buscar a lista de atualizações para o SO<br /> **sudo apt update**
 <br />
 
-=> Fazer a atualização do SO (pode demorar um pouco)<br /> **sudo apt upgrade**
+=> Fazer a atualização do SO (vai demorar um pouco)<br /> **sudo apt upgrade**
 <br />
 
 => Ao final da atualização, fechar a janela do terminal Linux<br />
